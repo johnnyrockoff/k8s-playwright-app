@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: tork-automation-app-set
+  name: k8s-playwright-app
 spec:
   generators:
   - clusters:
