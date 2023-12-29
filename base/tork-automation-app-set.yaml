@@ -6,8 +6,8 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: "ablcode@vs-ssh.visualstudio.com:v3/ablcode/Mojito/mojito-k8s-kalimba"
-        revision: develop
+        repoURL: "git@github.com:johnnyrockoff/k8s-playwright-app.git"
+        revision: master
         files:
           - path: "tork-cluster-config/**/playwright-config.json"
   template:
@@ -16,9 +16,9 @@ spec:
       namespace: argocd
     spec:
       destination:
-        namespace: kalimba
+        namespace: basic
         name: "{{cluster.name}}"
-      project: mojito-kalimba
+      project: basic-test
       syncPolicy:
         automated:
           prune: true

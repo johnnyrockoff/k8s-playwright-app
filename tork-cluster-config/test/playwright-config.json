@@ -2,13 +2,13 @@
   "name": "playwright-kalimba",
   "values": {
     "environment": "test",
-    "squad": "mojito",
-    "namespace": "kalimba",
+    "squad": "basic",
+    "namespace": "basic",
     "cron_schedule": "0 */3 * * *",
-    "container_image": "ablt01acrvczb6dxwjz.azurecr.io/mojito/playwright-kalimba",
+    "container_image": "localhost:5000/tork-basic:latest",
     "container_version": "1.0.0"
   },
   "cluster": {
-    "name": "abltech01aksauzhyzk52d"
+    "name": "minikube"
   }
 }
