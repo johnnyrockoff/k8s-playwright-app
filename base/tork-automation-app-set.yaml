@@ -1,7 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: basic-automation-app
+  name: tork-basic
+  namespace: default
 spec:
   generators:
     - git:
@@ -17,9 +18,9 @@ spec:
         notifications.argoproj.io/subscribe.on-sync-failed.teams: accelerationfrontendexperiencemojitoargo
     spec:
       destination:
-        namespace: basic-automation
+        namespace: default
         name: "{{cluster.name}}"
-      project: basic-automation
+      project: tork-basic
       source:
         repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
         targetRevision: master
