@@ -17,6 +17,7 @@ spec:
       name: k8s-playwright-cronjob
     spec:
       destination:
+        server: http://192.168.49.2
         name: minikube
         namespace: in-cluster
       project: k8s-playwright-cronjob
