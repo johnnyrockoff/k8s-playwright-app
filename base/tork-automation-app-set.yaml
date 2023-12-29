@@ -10,7 +10,7 @@ spec:
     - git:
         files:
           - path: tork-cluster-config/**/playwright-config.json
-        repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
+        repoURL: https://github.com/johnnyrockoff/k8s-playwright-app
         revision: HEAD
   template:
     metadata:
@@ -22,7 +22,7 @@ spec:
       project: k8s-playwright-cronjob
       source:
         path: platform/playwright/basic/cronjob/cronjob-test.yaml
-        repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-cronjob.git'
+        repoURL: https://github.com/johnnyrockoff/k8s-playwright-cronjob
         targetRevision: HEAD
       syncPolicy:
         automated:
