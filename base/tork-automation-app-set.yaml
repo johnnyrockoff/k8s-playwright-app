@@ -11,19 +11,19 @@ spec:
         files:
           - path: tork-cluster-config/**/playwright-config.json
         repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
-        revision: master
+        revision: HEAD
   template:
     metadata:
       name: k8s-playwright-cronjob
     spec:
       destination:
-        name: '{{cluster.name}}'
+        name: minikube
         namespace: in-cluster
       project: k8s-playwright-cronjob
       source:
-        path: '/platform/playwright/basic/cronjob'
+        path: platform/playwright/basic/cronjob
         repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-cronjob.git'
-        targetRevision: master
+        targetRevision: HEAD
       syncPolicy:
         automated:
           prune: true
