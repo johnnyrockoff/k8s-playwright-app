@@ -21,7 +21,7 @@ spec:
         namespace: in-cluster
       project: k8s-playwright-cronjob
       source:
-        path: platform/playwright/basic/cronjob
+        path: cronjob/cronjob-test.yaml
         repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-cronjob.git'
         targetRevision: HEAD
       syncPolicy:
