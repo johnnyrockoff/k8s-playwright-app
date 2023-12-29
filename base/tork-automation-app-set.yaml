@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ name }}
+        app: tork-automation-app-set
     spec:
       project: k8s-playwright-app
       source:
@@ -21,7 +21,7 @@ spec:
         targetRevision: HEAD
       destination:
         server: https://kubernetes.default.svc
-        namespace: {{ values.namespace }}
+        namespace: argocd
       syncPolicy:
         automated:
           prune: true
