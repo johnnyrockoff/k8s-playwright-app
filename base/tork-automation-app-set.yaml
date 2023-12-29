@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: tork-basic
+  namespace: in-cluster
 spec:
   generators:
     - git:
@@ -17,7 +18,7 @@ spec:
         notifications.argoproj.io/subscribe.on-sync-failed.teams: accelerationfrontendexperiencemojitoargo
     spec:
       destination:
-        namespace: default
+        namespace: in-cluster
         name: "{{cluster.name}}"
       project: tork-basic
       source:
