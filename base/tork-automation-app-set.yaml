@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: k8s-playwright-app
+  name: tork-automation-app-set
 spec:
   generators:
   - clusters:
@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: {{.Name}}
+        app: {{ name }}
     spec:
       project: k8s-playwright-app
       source:
@@ -21,7 +21,7 @@ spec:
         targetRevision: HEAD
       destination:
         server: https://kubernetes.default.svc
-        namespace: {{.Name}}
+        namespace: {{ values.namespace }}
       syncPolicy:
         automated:
           prune: true

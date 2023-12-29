@@ -3,7 +3,7 @@
   "values": {
     "environment": "test",
     "squad": "basic",
-    "namespace": "basic",
+    "namespace": "argocd",
     "cron_schedule": "0 */3 * * *",
     "container_image": "localhost:5000/tork-basic:latest",
     "container_version": "1.0.0"
