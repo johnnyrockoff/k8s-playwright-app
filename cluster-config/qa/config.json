@@ -1,0 +1,22 @@
+{
+  "environment": "qa",
+  "values": {
+    "user_id": "6302bc07-258d-4f61-a9f5-743756ca3137",
+    "docker": {
+      "acr": "ablt01acrmb3qs3iy7t",
+      "version": {
+        "frontend": "0.1.214",
+        "backend": "1.0.98"
+      }
+    }
+  },
+  "helm": {
+    "acr": "ablt01acrmb3qs3iy7t.azurecr.io/mojito",
+    "image": "kalimba-deploy",
+    "revision": "1.1.6"
+  },
+  "kustomize_path": "overlays/qa",
+  "cluster": {
+    "name": "abltech01akstewlifjvwz"
+  }
+}

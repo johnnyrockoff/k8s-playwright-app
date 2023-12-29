@@ -1,0 +1,23 @@
+{
+  "environment": "prod",
+  "values": {
+    "user_id": "ae939358-3ec4-45d5-b7ec-7d5856d77cf1",
+    "docker": {
+      "acr": "ablt01acrrv5nivlx2j",
+      "version": {
+        "frontend": "0.1.214",
+        "backend": "1.0.98"
+      }
+    }
+  },
+  "helm": {
+    "acr": "ablt01acrrv5nivlx2j.azurecr.io/mojito",
+    "image": "kalimba-deploy",
+    "revision": "1.1.6"
+  },
+  "kustomize_path": "overlays/prod",
+  "cluster": {
+    "name": "abltech01aksu3r5jstped"
+  }
+}
+

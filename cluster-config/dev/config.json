@@ -1,0 +1,18 @@
+{
+  "environment": "dev",
+  "project": "kalimba",
+  "values": {
+    "user_id": "01c595f4-99d3-4a07-8fa3-546f777a3fa5",
+    "docker": {
+      "acr": "ablt01acrvczb6dxwjz",
+      "version": {
+        "frontend": "0.1.234",
+        "backend": "1.0.108"
+      }
+    }
+  },
+  "kustomize_path": "overlays/dev",
+  "cluster": {
+    "name": "abltech01aksauzhyzk52d"
+  }
+}

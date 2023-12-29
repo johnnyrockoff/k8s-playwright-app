@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: tork-automation-app
+  namespace: argocd
+spec:
+  generators:
+    - git:
+        repoURL: "ablcode@vs-ssh.visualstudio.com:v3/ablcode/Mojito/mojito-k8s-kalimba"
+        revision: develop
+        files:
+          - path: "tork-cluster-config/**/playwright-config.json"
+  template:
+    metadata:
+      name: "{{name}}-app-set"
+      namespace: argocd
+    spec:
+      destination:
+        namespace: kalimba
+        name: "{{cluster.name}}"
+      project: mojito-kalimba
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

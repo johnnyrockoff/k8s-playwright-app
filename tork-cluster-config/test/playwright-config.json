@@ -1,0 +1,14 @@
+{
+  "name": "playwright-kalimba",
+  "values": {
+    "environment": "test",
+    "squad": "mojito",
+    "namespace": "kalimba",
+    "cron_schedule": "0 */3 * * *",
+    "container_image": "ablt01acrvczb6dxwjz.azurecr.io/mojito/playwright-kalimba",
+    "container_version": "1.0.0"
+  },
+  "cluster": {
+    "name": "abltech01aksauzhyzk52d"
+  }
+}
