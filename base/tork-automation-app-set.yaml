@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: tork-automation-app
+  name: basic-test
   namespace: argocd
 spec:
   generators:
@@ -16,9 +16,9 @@ spec:
       namespace: argocd
     spec:
       destination:
-        namespace: basic
+        namespace: in-cluster
         name: "{{cluster.name}}"
-      project: basic-test
+      project: k8s-playwright-app
       syncPolicy:
         automated:
           prune: true
