@@ -1,27 +1,27 @@
+# applicationset.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: k8s-playwright-app
-  namespace: argocd
+  name: tork-automation-app-set
 spec:
   generators:
-    - git:
-        repoURL: "git@github.com:johnnyrockoff/k8s-playwright-app.git"
-        revision: master
-        files:
-          - path: "tork-cluster-config/**/playwright-config.json"
+  - clusters:
+      - name: in-cluster
+        cluster: https://kubernetes.default.svc
+    clusterDecision: cluster.ResourceCount
   template:
     metadata:
-      name: "{{name}}-app-set"
-      namespace: argocd
+      labels:
+        app: {{.Name}}
     spec:
+      project: default
+      source:
+        repoURL: git@github.com:johnnyrockoff/k8s-playwright-app.git
+        path: tork-cluster-config/**/playwright-config.json
+        targetRevision: HEAD
       destination:
-        namespace: in-cluster
-        name: "{{cluster.name}}"
-      project: k8s-playwright-app
+        server: https://kubernetes.default.svc
+        namespace: {{.Name}}
       syncPolicy:
         automated:
           prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
