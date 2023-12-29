@@ -1,27 +1,31 @@
-# applicationset.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: tork-automation-app-set
+  name: basic-automation-app
+  namespace: argocd
 spec:
   generators:
-  - clusters:
-      - name: in-cluster
-        cluster: https://kubernetes.default.svc
-    clusterDecision: cluster.ResourceCount
+    - git:
+        repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
+        revision: master
+        files:
+          - path: "tork-cluster-config/**/playwright-config.json"
   template:
     metadata:
-      labels:
-        app: tork-automation-app-set
+      name: "{{ environment }}-basic-automation-app"
+      annotations:
+        notifications.argoproj.io/subscribe.on-health-degraded.teams: accelerationfrontendexperiencemojitoargo
+        notifications.argoproj.io/subscribe.on-sync-failed.teams: accelerationfrontendexperiencemojitoargo
     spec:
-      project: k8s-playwright-app
-      source:
-        repoURL: git@github.com:johnnyrockoff/k8s-playwright-app.git
-        path: tork-cluster-config/**/playwright-config.json
-        targetRevision: HEAD
       destination:
-        server: https://kubernetes.default.svc
-        namespace: argocd
+        namespace: basic-automation
+        name: "{{cluster.name}}"
+      project: basic-automation
+      source:
+        repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
+        targetRevision: master
+        path: "basic-automation-app-set/{{kustomize_path}}"
       syncPolicy:
         automated:
           prune: true
+          selfHeal: true
