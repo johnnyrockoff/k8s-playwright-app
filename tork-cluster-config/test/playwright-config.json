@@ -1,9 +1,9 @@
 {
-  "name": "tork-apitestrunner",
+  "name": "k8s-playwright-app",
   "values": {
-    "environment": "dev",
+    "environment": "test",
     "squad": "mojito",
-    "namespace": "k8s-poc",
+    "namespace": "default",
     "cron_schedule": "0 */12 * * *",
     "container_image": "playwright-image-basic",
     "user_assigned_identity_id": "",

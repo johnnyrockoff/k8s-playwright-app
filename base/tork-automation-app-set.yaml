@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: k8s-playwright-app
-  namespace: argocd
+  namespace: default
 spec:
   generators:
     - git:
@@ -10,15 +10,14 @@ spec:
         revision: master
         files:
           - path: "tork-cluster-config/**/playwright-config.json"
-          #- path: "cluster-config/**/tork-apitestrunner-config.json"
   template:
     metadata:
       name: "{{name}}-app-set"
-      namespace: argocd
+      namespace: default
     spec:
       destination:
-        namespace: argocd
-        name: "{{cluster.name}}"
+        namespace: default
+        name: kubernetes
       project: k8s-playwright-app
       syncPolicy:
         automated:
