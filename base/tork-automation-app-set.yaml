@@ -20,9 +20,9 @@ spec:
         name: default
       project: k8s-playwright-cronjob
       source:
-        repoURL: "{{values.helm_repo}}"
-        chart: "{{values.chart_name}}"
-        targetRevision: "{{values.chart_version}}"
+        repoURL: https://github.com/johnnyrockoff/k8s-playwright-cronjob
+        chart: k8s-playwright-cronjob-0.1.0
+        targetRevision: 1.0.0
         helm:
           parameters:
             - name: environment
