@@ -2,4 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - tork-automation-app-set.yaml
+  - namespace-app-set.yaml
+  - frontend-mock-app-set.yaml
+#  - tork-automation-app-set.yaml
+  - frontend-app-set.yaml
+  - backend-app-set.yaml
+  - backend-mock-app-set.yaml
+  - authz-poc-app-set.yaml
+  - authz-poc-mock-app-set.yaml

@@ -1,14 +1,18 @@
 {
-  "name": "playwright-kalimba",
+  "name": "tork-apitestrunner",
   "values": {
-    "environment": "test",
-    "squad": "basic",
-    "namespace": "argocd",
-    "cron_schedule": "0 */3 * * *",
-    "container_image": "localhost:5000/tork-basic:latest",
-    "container_version": "1.0.0"
+    "environment": "dev",
+    "squad": "mojito",
+    "namespace": "k8s-poc",
+    "cron_schedule": "0 */12 * * *",
+    "container_image": "playwright-image-basic",
+    "user_assigned_identity_id": "",
+    "container_version": "latest",
+    "helm_repo": "playwright-release",
+    "image_name": "playwright-image-basic",
+    "chart_version": "1"
   },
   "cluster": {
-    "name": "minikube"
+    "name": "abltech01aksauzhyzk52d"
   }
 }

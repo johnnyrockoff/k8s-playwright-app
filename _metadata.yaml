@@ -1,0 +1,22 @@
+# Acuity Brands requires this file to be included and maintained with every repo.  Review the associated ADR here:
+# https://ablcode.visualstudio.com/Architecture/_git/techdocs?path=/product-documentation/system/arch-decision-records/atech-adrs/source-code-metadata.md&_a=preview
+
+repository-metadata:
+
+  # Replace stub with one of the listed lifecycle values.
+  # VALID VALUES: experimental, deployed, maintenance, end-of-life
+  lifecycle-stage: deployed
+
+  # Replace/Add/Remove stubbed list values with one or more of the listed content type values.
+  # VALID VALUES: code, infrastructure, docs
+  content-types:
+    - code
+    - infrastructure
+
+  # Replace stub with one of the listed access-restrictions values.
+  # VALID VALUES: yes, no
+  access-restrictions: no
+
+  # Replace/Add/Remove stubbed list values with one or more of the listed content type values.
+  # VALID VALUES: open-source-mirror, pii-generator, pii-processor
+  tags:
