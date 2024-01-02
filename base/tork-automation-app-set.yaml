@@ -9,7 +9,7 @@ spec:
         repoURL: "https://github.com/johnnyrockoff/k8s-playwright-app"
         revision: master
         files:
-          - path: "tork-cluster-config/**/playwright-config.json"
+          - path: "tork-cluster-config/test/playwright-config.json"
   template:
     metadata:
       name: "{{name}}-app-set"
