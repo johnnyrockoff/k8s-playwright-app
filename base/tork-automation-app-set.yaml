@@ -18,7 +18,27 @@ spec:
       destination:
         namespace: in-cluster
         name: default
-      project: k8s-playwright-app
+      project: k8s-playwright-cronjob
+      source:
+        repoURL: "{{values.helm_repo}}"
+        chart: "{{values.image_name}}"
+        targetRevision: "{{values.chart_version}}"
+        helm:
+          parameters:
+            - name: environment
+              value: "{{values.environment}}"
+            - name: squad
+              value: "{{values.squad}}"
+            - name: namespace
+              value: "{{values.namespace}}"
+            - name: defaults.cron_schedule
+              value: "{{values.cron_schedule}}"
+            - name: container_image
+              value: "{{values.container_image}}"
+            - name: defaults.user_assigned_identity_id
+              value: "{{values.user_assigned_identity_id}}"
+            - name: defaults.container_version
+              value: "{{values.container_version}}"
       syncPolicy:
         automated:
           prune: true
