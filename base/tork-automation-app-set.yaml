@@ -13,35 +13,33 @@ spec:
   template:
     metadata:
       name: "{{name}}-app-set"
-      namespace: argocd
+      namespace: default
     spec:
       destination:
-        namespace: in-cluster
-        name: argocd
-      project: k8s-playwright-cronjob
+        namespace: default
+        server: https://kubernetes.default.svc
+      project: default
       source:
-        repoURL: https://github.com/johnnyrockoff/k8s-playwright-cronjob
-        chart: k8s-playwright-cronjob-0.1.0
-        targetRevision: 1.0.0
         helm:
           parameters:
-            - name: environment
-              value: "{{values.environment}}"
-            - name: squad
-              value: "{{values.squad}}"
-            - name: namespace
-              value: "{{values.namespace}}"
-            - name: defaults.cron_schedule
-              value: "{{values.cron_schedule}}"
-            - name: container_image
-              value: "{{values.container_image}}"
-            - name: defaults.user_assigned_identity_id
-              value: "{{values.user_assigned_identity_id}}"
-            - name: defaults.container_version
-              value: "{{values.container_version}}"
+            - name: build.enabled
+              value: "false"
+            - name: deploy.route.enabled
+              value: "false"
+            - name: image.name
+              value: k8s-playwright-cronjob-0.1.0
+        chart: playwright-release
+        repoURL: https://github.com/johnnyrockoff/k8s-playwright-cronjob
+        targetRevision: 0.0.3
       syncPolicy:
+        retry:
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m0s
+          limit: 5
         automated:
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace=true
+        - CreateNamespace=true
