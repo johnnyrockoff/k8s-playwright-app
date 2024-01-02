@@ -13,11 +13,11 @@ spec:
   template:
     metadata:
       name: "{{name}}-app-set"
-      namespace: argocd
+      namespace: default
     spec:
       destination:
         namespace: in-cluster
-        name: "default"
+        name: default
       project: k8s-playwright-app
       syncPolicy:
         automated:
