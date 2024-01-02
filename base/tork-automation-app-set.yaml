@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: k8s-playwright-app
-  namespace: default
+  namespace: in-cluster
 spec:
   generators:
     - git:
