@@ -16,7 +16,7 @@ spec:
       namespace: default
     spec:
       destination:
-        namespace: default
+        namespace: in-cluster
         server: https://kubernetes.default.svc
       project: default
       source:
