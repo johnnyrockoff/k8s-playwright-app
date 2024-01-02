@@ -21,7 +21,7 @@ spec:
       project: k8s-playwright-cronjob
       source:
         repoURL: "{{values.helm_repo}}"
-        chart: "{{values.image_name}}"
+        chart: "{{values.chart_name}}"
         targetRevision: "{{values.chart_version}}"
         helm:
           parameters:

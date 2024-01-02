@@ -4,13 +4,13 @@
     "environment": "test",
     "squad": "mojito",
     "namespace": "default",
-    "cron_schedule": "0 */12 * * *",
+    "cron_schedule": "* * * * *",
     "container_image": "playwright-image-basic",
     "user_assigned_identity_id": "",
     "container_version": "latest",
-    "helm_repo": "playwright-release",
-    "image_name": "playwright-image-basic",
-    "chart_version": "1"
+    "helm_repo": "https://github.com/johnnyrockoff/k8s-playwright-cronjob",
+    "chart_name": "k8s-playwright-cronjob-0.1.0",
+    "chart_version": "1.0.0"
   },
   "cluster": {
     "name": "abltech01aksauzhyzk52d"
