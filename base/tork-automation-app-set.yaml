@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: tork-automation-app
+  name: k8s-playwright-app
   namespace: argocd
 spec:
   generators:
     - git:
-        repoURL: "ablcode@vs-ssh.visualstudio.com:v3/ablcode/Mojito/mojito-k8s-kalimba"
-        revision: develop
+        repoURL: "https://github.com/johnnyrockoff/k8s-playwright-app"
+        revision: master
         files:
           - path: "tork-cluster-config/**/playwright-config.json"
           #- path: "cluster-config/**/tork-apitestrunner-config.json"
