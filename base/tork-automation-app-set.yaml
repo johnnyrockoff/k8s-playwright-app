@@ -17,7 +17,7 @@ spec:
     spec:
       destination:
         namespace: in-cluster
-        name: "{{cluster.name}}"
+        name: "default"
       project: k8s-playwright-app
       syncPolicy:
         automated:
