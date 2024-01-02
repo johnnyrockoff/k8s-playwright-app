@@ -5,7 +5,7 @@
     "squad": "",
     "namespace": "default",
     "cron_schedule": "* * * * *",
-    "container_image": "index.docker.io/badproxy/playwright-image-basic",
+    "container_image": "badproxy/playwright-image-basic",
     "user_assigned_identity_id": "",
     "container_version": "v1.0.0",
     "helm_repo": "https://github.com/johnnyrockoff/k8s-playwright-cronjob/releases/download/20",

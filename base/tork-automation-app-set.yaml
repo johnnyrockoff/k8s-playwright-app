@@ -10,19 +10,19 @@ spec:
         revision: master
         files:
           - path: "cluster-config/**/playwright-config.json"
-          #- path: "cluster-config/**/tork-apitestrunner-config.json"
   template:
     metadata:
       name: "{{name}}-app-set"
       namespace: in-cluster
     spec:
       destination:
+        server: https://kubernetes.default.svc
         namespace: in-cluster
         name: "{{cluster.name}}"
       project: k8s-playwright-cronjob
       source:
-        repoURL: "{{values.helm_repo}}"
-        chart: "{{values.image_name}}"
+        repoURL: "https://github.com/johnnyrockoff/k8s-playwright-cronjob/releases/tag/20/"
+        chart: "k8s-playwright-cronjob-20"
         targetRevision: "{{values.chart_version}}"
         helm:
           parameters:
