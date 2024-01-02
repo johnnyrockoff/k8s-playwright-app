@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: k8s-playwright-app
-  namespace: default
+  namespace: argocd
 spec:
   generators:
     - git:
@@ -13,11 +13,11 @@ spec:
   template:
     metadata:
       name: "{{name}}-app-set"
-      namespace: default
+      namespace: argocd
     spec:
       destination:
-        namespace: default
-        name: kubernetes
+        namespace: in-cluster
+        name: "{{cluster.name}}"
       project: k8s-playwright-app
       syncPolicy:
         automated:
