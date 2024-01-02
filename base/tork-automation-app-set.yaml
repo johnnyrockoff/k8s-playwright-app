@@ -2,44 +2,47 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: k8s-playwright-app
-  namespace: in-cluster
+  namespace: argocd
 spec:
   generators:
     - git:
         repoURL: "https://github.com/johnnyrockoff/k8s-playwright-app"
         revision: master
         files:
-          - path: "tork-cluster-config/test/playwright-config.json"
+          - path: "cluster-config/**/playwright-config.json"
+          #- path: "cluster-config/**/tork-apitestrunner-config.json"
   template:
     metadata:
       name: "{{name}}-app-set"
-      namespace: default
+      namespace: argocd
     spec:
       destination:
         namespace: in-cluster
-        server: https://kubernetes.default.svc
-      project: default
+        name: "{{cluster.name}}"
+      project: k8s-playwright-cronjob
       source:
+        repoURL: "{{values.helm_repo}}"
+        chart: "{{values.image_name}}"
+        targetRevision: "{{values.chart_version}}"
         helm:
           parameters:
-            - name: build.enabled
-              value: "false"
-            - name: deploy.route.enabled
-              value: "false"
-            - name: image.name
-              value: k8s-playwright-cronjob-0.1.0
-        chart: playwright-release
-        repoURL: https://github.com/johnnyrockoff/k8s-playwright-cronjob
-        targetRevision: 0.0.3
+            - name: environment
+              value: "{{values.environment}}"
+            - name: squad
+              value: "{{values.squad}}"
+            - name: namespace
+              value: "{{values.namespace}}"
+            - name: defaults.cron_schedule
+              value: "{{values.cron_schedule}}"
+            - name: container_image
+              value: "{{values.container_image}}"
+            - name: defaults.user_assigned_identity_id
+              value: "{{values.user_assigned_identity_id}}"
+            - name: defaults.container_version
+              value: "{{values.container_version}}"
       syncPolicy:
-        retry:
-          backoff:
-            duration: 5s
-            factor: 2
-            maxDuration: 3m0s
-          limit: 5
         automated:
           prune: true
           selfHeal: true
         syncOptions:
-        - CreateNamespace=true
+          - CreateNamespace=true

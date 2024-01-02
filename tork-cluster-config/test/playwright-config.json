@@ -1,18 +1,18 @@
 {
-  "name": "k8s-playwright-app",
+  "name": "k8s-playwright-cronjob",
   "values": {
     "environment": "test",
-    "squad": "mojito",
+    "squad": "",
     "namespace": "default",
     "cron_schedule": "* * * * *",
-    "container_image": "playwright-image-basic",
+    "container_image": "index.docker.io/badproxy/playwright-image-basic",
     "user_assigned_identity_id": "",
-    "container_version": "latest",
-    "helm_repo": "https://github.com/johnnyrockoff/k8s-playwright-cronjob",
-    "chart_name": "k8s-playwright-cronjob-0.1.0",
-    "chart_version": "1.0.0"
+    "container_version": "v1.0.0",
+    "helm_repo": "https://github.com/johnnyrockoff/k8s-playwright-cronjob/releases/download/20",
+    "image_name": "k8s-playwright-cronjob-20",
+    "chart_version": "20"
   },
   "cluster": {
-    "name": "abltech01aksauzhyzk52d"
+    "name": "in-cluster"
   }
 }
