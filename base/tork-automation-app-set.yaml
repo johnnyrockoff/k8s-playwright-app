@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: kalimba-automation-cronjob
-  namespace: argocd
+  namespace: default
 spec:
   generators:
     - git:
@@ -15,9 +15,9 @@ spec:
       name: "test-automation-cronjob"
     spec:
       destination:
-        namespace: argocd
+        namespace: default
         server: https://kubernetes.default.svc
-      project: default
+      project: k8s-playwright-app
       source:
         repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
         targetRevision: HEAD
