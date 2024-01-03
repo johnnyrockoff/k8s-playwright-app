@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: kalimba-automation-cronjob
-  namespace: in-cluster
+  namespace: argocd
 spec:
   generators:
     - git:
@@ -15,8 +15,8 @@ spec:
       name: "test-automation-cronjob"
     spec:
       destination:
-        namespace: in-cluster
-        name: in-cluster
+        namespace: argocd
+        name: argocd
       project: k8s-playwright
       source:
         repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app'
