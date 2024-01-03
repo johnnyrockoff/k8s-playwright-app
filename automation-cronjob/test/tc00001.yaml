@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: kalimba-playwright-cron
+  namespace: kalimba
+spec:
+  schedule: "*/2 * * * *"
+  jobTemplate:
+    metadata:
+      labels:
+        cron-job-name: kalimba-playwright-cron
+    spec:
+      template:
+        metadata:
+          labels:
+            cron-job-name: kalimba-playwright-cron
+        spec:
+          containers:
+            - name: playwright-kalimba
+              image: 'badproxy/tork-basic:v1.0.0'
+              imagePullPolicy: IfNotPresent
+              command:
+                - test
+          restartPolicy: OnFailure
