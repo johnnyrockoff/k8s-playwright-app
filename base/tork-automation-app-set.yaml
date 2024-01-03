@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: kalimba-automation-cronjob
-  namespace: default
+  name: k8s-playwright
+  namespace: badproxy
 spec:
   generators:
     - git:
@@ -15,7 +15,7 @@ spec:
       name: "test-automation-cronjob"
     spec:
       destination:
-        namespace: default
+        namespace: badproxy
         server: https://kubernetes.default.svc
       project: k8s-playwright-app
       source:
