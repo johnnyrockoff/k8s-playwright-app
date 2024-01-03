@@ -14,4 +14,11 @@ spec:
               imagePullPolicy: IfNotPresent
               command:
                 - test
+              resources:
+                requests:
+                  memory: "130M"
+                  cpu: "100m"
+                limits:
+                  memory: "500M"
+                  cpu: "200m"
           restartPolicy: OnFailure
