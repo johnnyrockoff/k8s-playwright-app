@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hello
+  name: k8s-playwright-cron
 spec:
   schedule: "* * * * *"
   jobTemplate:
@@ -9,11 +9,9 @@ spec:
       template:
         spec:
           containers:
-            - name: hello
-              image: busybox:1.28
+            - name: k8s-playwright-cron
+              image: badproxy/tork-basic:v1.0.0
               imagePullPolicy: IfNotPresent
               command:
-                - /bin/sh
-                - -c
-                - date; echo Hello from the Kubernetes cluster
+                - test
           restartPolicy: OnFailure
