@@ -2,11 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: kalimba-automation-cronjob
-  namespace: argocd
+  namespace: in-cluster
 spec:
   generators:
     - git:
-        repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
+        repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app'
         revision: master
         files:
           - path: "cluster-config/dev/config.json"
@@ -16,10 +16,10 @@ spec:
     spec:
       destination:
         namespace: in-cluster
-        name: "{{cluster.name}}"
+        name: in-cluster
       project: k8s-playwright
       source:
-        repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
+        repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app'
         targetRevision: master
         path: "automation-cronjob/"
       syncPolicy:
