@@ -1,24 +1,19 @@
-apiVersion: v1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: k8s-playwright-cronjob
-  namespace: argocd
+  name: hello
 spec:
-  schedule: "*/2 * * * *"
+  schedule: "* * * * *"
   jobTemplate:
-    metadata:
-      labels:
-        cron-job-name: k8s-playwright-cronjob
     spec:
       template:
-        metadata:
-          labels:
-            cron-job-name: k8s-playwright-cronjob
         spec:
           containers:
-            - name: k8s-playwright-cronjob
-              image: 'badproxy/tork-basic:v1.0.0'
+            - name: hello
+              image: busybox:1.28
               imagePullPolicy: IfNotPresent
               command:
-                - test
+                - /bin/sh
+                - -c
+                - date; echo Hello from the Kubernetes cluster
           restartPolicy: OnFailure
