@@ -15,8 +15,8 @@ spec:
       name: "test-automation-cronjob"
     spec:
       destination:
-        namespace: in-cluster
-        name: default
+        namespace: argocd
+        name: in-cluster
       project: k8s-playwright-app
       source:
         repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app'
