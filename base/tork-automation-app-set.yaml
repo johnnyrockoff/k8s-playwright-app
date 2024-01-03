@@ -1,20 +1,21 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1beta1
+kind: CronJob
 metadata:
-  name: k8s-playwright
+  name: my-cronjob
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: k8s-playwright
-  template:
-    metadata:
-      labels:
-        app: k8s-playwright
+  schedule: "*/5 * * * *"  # Run every 5 minutes
+  jobTemplate:
     spec:
-      containers:
-        - name: k8s-playwright-test
-          image: badproxy/playwright-image-basic:v1.0.0
+      template:
+        spec:
+          containers:
+          - name: k8s-playwright-test
+            image: badproxy/tork-basic:v1.0.0
+            command:
+            - "docker"
+            - "run"
+            - "--rm -it --ipc=host"
+          restartPolicy: OnFailure
 
 # apiVersion: argoproj.io/v1alpha1
 # kind: ApplicationSet
