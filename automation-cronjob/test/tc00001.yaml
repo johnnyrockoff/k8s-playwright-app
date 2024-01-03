@@ -1,22 +1,22 @@
 apiVersion: v1
 kind: CronJob
 metadata:
-  name: kalimba-playwright-cron
+  name: k8s-playwright-cronjob
   namespace: argocd
 spec:
   schedule: "*/2 * * * *"
   jobTemplate:
     metadata:
       labels:
-        cron-job-name: kalimba-playwright-cron
+        cron-job-name: k8s-playwright-cronjob
     spec:
       template:
         metadata:
           labels:
-            cron-job-name: kalimba-playwright-cron
+            cron-job-name: k8s-playwright-cronjob
         spec:
           containers:
-            - name: playwright-kalimba
+            - name: k8s-playwright-cronjob
               image: 'badproxy/tork-basic:v1.0.0'
               imagePullPolicy: IfNotPresent
               command:
