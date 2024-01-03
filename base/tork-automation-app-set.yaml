@@ -1,16 +1,17 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: my-cronjob
+  name: k8s-playwright-cronjob
 spec:
-  schedule: "* * * * *"  # Run every 5 minutes
+  schedule: "* * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: k8s-playwright-test
+          - name: k8s-playwright
             image: badproxy/tork-basic:v1.0.0
+            imagePullPolicy: IfNotPresent
             command:
             - "docker"
             - "run"
