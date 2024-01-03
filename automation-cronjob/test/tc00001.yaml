@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: kalimba-playwright-cron
-  namespace: in-cluster
+  namespace: argocd
 spec:
   schedule: "*/2 * * * *"
   jobTemplate:
