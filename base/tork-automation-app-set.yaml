@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
   name: k8s-playwright-automation
-  namespace: default
+  namespace:
 spec:
   generators:
     - git:
@@ -15,7 +15,7 @@ spec:
       name: "test-automation-cronjob"
     spec:
       destination:
-        namespace: default
+        namespace: in-cluster
         server: https://kubernetes.default.svc
       project: k8s-playwright-app
       source:
