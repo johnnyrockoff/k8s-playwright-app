@@ -1,6 +1,6 @@
 ---
 kind: CronJob
-apiVersion: batch/v1beta1
+apiVersion: v1
 metadata:
   name: k8s-playwright-cron
   namespace: in-cluster
