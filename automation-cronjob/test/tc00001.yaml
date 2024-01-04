@@ -25,9 +25,9 @@ spec:
               args: [ "test" ]
               resources:
                 requests:
-                  memory: "200M"
-                  cpu: "250m"
-                limits:
-                  memory: "250M"
+                  memory: "500M"
                   cpu: "500m"
+                limits:
+                  memory: "500M"
+                  cpu: "900m"
           restartPolicy: Never
