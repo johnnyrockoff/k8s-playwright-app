@@ -20,9 +20,9 @@ spec:
         spec:
           containers:
             - name: k8s-playwright-cron
-              image: badproxy/tork-basic:v1.0.0
+              image: badproxy/kalimba-playwright-basic:v1.0.0
               imagePullPolicy: Always
-              args: [ "test" ]
+              args: [ "" ]
               resources:
                 requests:
                   memory: "500M"
