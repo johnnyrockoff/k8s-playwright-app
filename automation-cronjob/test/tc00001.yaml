@@ -23,10 +23,7 @@ spec:
               image: badproxy/kalimba-playwright-basic:v1.0.0
               env:
                 - name: AUTOMATION_PAT
-                  valueFrom:
-                    secretKeyRef:
-                      key: automation-pat-secret
-                      name: automation-cronjob-secrets
+                  value: "Ond6N2dwZjZpM2huM3Vmd2h6YnE3NXFzNGJ1cGVzNXNmNm1tMmc1bW40ZTZzcXlicG9ybHE="
               imagePullPolicy: Always
               args: [ "" ]
               resources:
