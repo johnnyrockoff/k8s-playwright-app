@@ -25,7 +25,7 @@ spec:
                 - name: personal-access-token
                   value: 'Ond6N2dwZjZpM2huM3Vmd2h6YnE3NXFzNGJ1cGVzNXNmNm1tMmc1bW40ZTZzcXlicG9ybHE='
               imagePullPolicy: Always
-              args: [ "AUTOMATION_PAT=$(personal-access-token)" ]
+              args: [ "-e AUTOMATION_PAT=$(personal-access-token)" ]
               resources:
                 requests:
                   memory: "500M"
