@@ -1,24 +1,32 @@
-apiVersion: batch/v1
+---
 kind: CronJob
+apiVersion: batch/v1beta1
 metadata:
   name: k8s-playwright-cron
+  namespace: badproxy
 spec:
-  schedule: "* * * * *"
+  schedule: "*/2 * * * *"
   jobTemplate:
     spec:
+      backoffLimit: 3
+      ttlSecondsAfterFinished: 300
+      activeDeadlineSeconds: 300
       template:
-        spec:
-          containers:
-            - name: k8s-playwright-cron
-              image: badproxy/tork-basic:v1.0.0
-              imagePullPolicy: IfNotPresent
-              command:
-                - test
-              resources:
-                requests:
-                  memory: "130M"
-                  cpu: "100m"
-                limits:
-                  memory: "500M"
-                  cpu: "200m"
-          restartPolicy: OnFailure
+        metadata:
+          labels:
+            bu: abltech
+            squad: mojito
+            env: test
+restartPolicy: Never
+containers:
+  - name: k8s-playwright-cron
+    image: badproxy/tork-basic:v1.0.0
+    imagePullPolicy: Always
+    args: ["test"]
+    resources:
+      requests:
+        memory: "200M"
+        cpu: "250m"
+      limits:
+        memory: "250M"
+        cpu: "500m"
