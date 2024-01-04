@@ -17,7 +17,7 @@ spec:
       destination:
         namespace: in-cluster
         server: https://kubernetes.default.svc
-      project: k8s-playwright-cronjob
+      project: default
       source:
         repoURL: 'https://github.com/johnnyrockoff/k8s-playwright-app.git'
         targetRevision: HEAD
