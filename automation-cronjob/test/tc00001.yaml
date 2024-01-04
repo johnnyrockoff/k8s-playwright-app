@@ -21,8 +21,11 @@ spec:
           containers:
             - name: k8s-playwright-cron
               image: badproxy/kalimba-playwright-basic:v1.0.0
+              env:
+                - name: personal-access-token
+                  value: 'Ond6N2dwZjZpM2huM3Vmd2h6YnE3NXFzNGJ1cGVzNXNmNm1tMmc1bW40ZTZzcXlicG9ybHE='
               imagePullPolicy: Always
-              args: [ "" ]
+              args: [ "AUTOMATION_PAT=$(personal-access-token)" ]
               resources:
                 requests:
                   memory: "500M"
