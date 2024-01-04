@@ -15,7 +15,7 @@ spec:
       name: "test-automation-cronjob"
     spec:
       destination:
-        namespace: in-cluster
+        namespace: argocd
         server: https://kubernetes.default.svc
       project: k8s-playwright-automation
       source:
