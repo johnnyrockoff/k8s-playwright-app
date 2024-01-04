@@ -1,6 +1,6 @@
 ---
 kind: CronJob
-apiVersion: v1
+apiVersion: batch/v1
 metadata:
   name: k8s-playwright-cron
   namespace: argocd
@@ -17,16 +17,17 @@ spec:
             bu: abltech
             squad: mojito
             env: test
-restartPolicy: Never
-containers:
-  - name: k8s-playwright-cron
-    image: badproxy/tork-basic:v1.0.0
-    imagePullPolicy: Always
-    args: ["test"]
-    resources:
-      requests:
-        memory: "200M"
-        cpu: "250m"
-      limits:
-        memory: "250M"
-        cpu: "500m"
+        spec:
+          containers:
+            - name: k8s-playwright-cron
+              image: badproxy/tork-basic:v1.0.0
+              imagePullPolicy: Always
+              args: [ "test" ]
+              resources:
+                requests:
+                  memory: "200M"
+                  cpu: "250m"
+                limits:
+                  memory: "250M"
+                  cpu: "500m"
+          restartPolicy: Never
