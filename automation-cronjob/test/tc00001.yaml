@@ -9,7 +9,7 @@ spec:
   jobTemplate:
     spec:
       backoffLimit: 3
-      ttlSecondsAfterFinished: 300
+      ttlSecondsAfterFinished: 10
       activeDeadlineSeconds: 300
       template:
         metadata:
