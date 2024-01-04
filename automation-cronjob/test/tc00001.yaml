@@ -3,7 +3,7 @@ kind: CronJob
 apiVersion: v1
 metadata:
   name: k8s-playwright-cron
-  namespace: in-cluster
+  namespace: argocd
 spec:
   schedule: "*/2 * * * *"
   jobTemplate:
